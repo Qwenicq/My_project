@@ -1,0 +1,20 @@
+#include<stdio.h>
+#include<string.h>
+int main(){
+   char str[100];
+   scanf("%s",&str);
+   int n = strlen(str);
+   int i = 0,j,counter = 0;
+   for ( i = 0; i < (n/2); i++)
+   {
+    for(j=1;j<n;j++){
+        if(str[j] == str[i])
+        counter++;
+    }
+   }
+   printf("%d\n",counter);
+   if(counter%2 == 0)
+   printf("Yes");
+   else
+   printf("No");
+}
