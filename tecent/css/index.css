@@ -1,0 +1,249 @@
+body {
+    background: url("../image/bg.jpg") no-repeat;
+}
+
+
+.banxin {
+    width: 1500px;
+    margin: auto 280px;
+}
+
+.main {
+    position: relative;
+}
+
+/* main-head */
+.main-head {
+    height: 43px;
+}
+
+.logo {
+    float: left;
+    height: 43px;
+    width: 150px;
+    margin-top: 5px;
+}
+
+.logo img {
+    width: 100%;
+}
+
+.main .main-head ul li {
+    float: right;
+    list-style-type: none;
+    margin-left: 20px;
+}
+
+.main .main-head ul li a {
+    color: #fff;
+    text-decoration: none;
+    line-height: 43px;
+}
+
+.main .main-head ul li .add {
+    border: 0;
+    background-color: transparent;
+    text-decoration: none;
+    line-height: 43px;
+    color: #cad7fc;
+}
+
+.main .main-head ul li img {
+    vertical-align: middle;
+}
+
+.main .main-head ul li p {
+    color: #fff;
+    margin: 0;
+    line-height: 43px;
+}
+
+.main .main-head ul li input {
+    width: 345px;
+    height: 38px;
+    margin-top: 5px;
+    border: 0;
+    line-height: 43px;
+    background-color: #849ff8;
+    color: #dae2fd;
+    border-radius: 38px;
+    padding-left: 20px;
+    outline: none;
+}
+
+.care {
+    display: none;
+    position: absolute;
+    right: 200px;
+    top: 40px;
+    width: 418px;
+    height: 100px;
+    background-color: #fff;
+    border-radius: 10px;
+}
+
+.c-head {
+    display: block;
+    height: 20px;
+    text-align: left;
+    font-size: 14px;
+    padding-left: 10px;
+    padding-top: 10px;
+    color: #ccc;
+}
+
+.c-down {
+    text-align: center;
+    font-size: 14px;
+    line-height: 30px;
+    color: #ccc;
+}
+
+.main .main-head ul .location:hover .care {
+    display: block;
+}
+
+.xian {
+    position: relative;
+    height: 12px;
+    border-bottom: 1px solid rgba(255, 255, 255, .24);
+    z-index: 2;
+}
+
+.report {
+    height: 86px;
+}
+
+.qxt {
+    padding-top: 15px;
+    color: #c1dffd;
+}
+
+#wd {
+    display: inline-block;
+    color: #fff;
+    font-size: 86px;
+    font-style: normal;
+    height: 86px;
+    line-height: 86px;
+    margin: 0;
+}
+
+#tq {
+    display: inline-block;
+    font-size: 28px;
+    color: #fff;
+    padding-left: 23px;
+}
+
+#aqi {
+    display: inline-block;
+    margin-left: 23px;
+    height: 18px;
+    line-height: 18px;
+    font-size: 14px;
+    background-color: #f1ab62;
+    color: #fff;
+    border-radius: 18px;
+    padding: 3px 10px 3px 3px;
+}
+
+#aqi::before {
+    content: '';
+    float: left;
+    width: 18px;
+    height: 18px;
+    background-color: #fff;
+    background-repeat: no-repeat;
+    background-position: center;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+#aqi::before {
+    background-image: url(../image/quality.png);
+}
+
+#warning {
+    display: inline-block;
+    margin-left: 23px;
+    height: 18px;
+    background-color: #86c5f7;
+    color: #fff;
+    line-height: 18px;
+    font-size: 14px;
+    border-radius: 18px;
+    padding: 3px 10px 3px 10px;
+}
+
+#other .item {
+    float: left;
+    margin-right: 40px;
+    font-size: 20px;
+    color: #fff;
+}
+
+#other .item .icon {
+    display: inline-block;
+    height: 20px;
+    width: 20px;
+    background-size: 20px 20px;
+    vertical-align: middle;
+    margin-right: 10px;
+}
+
+#other .item .wind {
+    background-image: url(../image/lo.png);
+}
+
+#other .item .humidity {
+    background-image: url(../image/water.png);
+}
+
+#other .item .kPa {
+    background-image: url(../image/qy.png);
+}
+
+#other .item .limit {
+    background-image: url(../image/car.png);
+}
+
+.main #current-weather {
+    position: absolute;
+    top: 150px;
+    right: 200px;
+}
+
+.main .tips {
+    position: absolute;
+    top: 260px;
+    left: 0;
+}
+
+.main .tips #txt-tips::before {
+    content: '';
+    float: left;
+    height: 11px;
+    width: 11px;
+    margin-right: 13px;
+    background: #fff;
+    border-radius: 50%;
+    margin-top: 5px;
+}
+
+.main .tips #txt-tips {
+    display: inline-block;
+    vertical-align: middle;
+    line-height: 20px;
+    font-size: 20px;
+    color: #fff;
+}
+
+.main .tips #btn-tip-switch {
+    margin-left: 15px;
+    display: inline-block;
+    vertical-align: middle;
+    height: 20px;
+    width: 20px;
+    background-image: url(../image/change.png);
+}
