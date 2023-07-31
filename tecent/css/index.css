@@ -1,10 +1,18 @@
 body {
     background: url("../image/bg.jpg") no-repeat;
+    background-color: #f6f9fe;
 }
 
+a {
+    text-decoration: none;
+}
+
+li {
+    list-style: none;
+}
 
 .banxin {
-    width: 1500px;
+    width: 1400px;
     margin: auto 280px;
 }
 
@@ -28,19 +36,19 @@ body {
     width: 100%;
 }
 
-.main .main-head ul li {
+.main .main-head ul .head1 {
     float: right;
     list-style-type: none;
     margin-left: 20px;
 }
 
-.main .main-head ul li a {
+.main .main-head ul .head1 a {
     color: #fff;
     text-decoration: none;
     line-height: 43px;
 }
 
-.main .main-head ul li .add {
+.main .main-head ul .head1 .add {
     border: 0;
     background-color: transparent;
     text-decoration: none;
@@ -48,17 +56,29 @@ body {
     color: #cad7fc;
 }
 
-.main .main-head ul li img {
+.main .main-head ul .head1 img {
     vertical-align: middle;
 }
 
-.main .main-head ul li p {
+.main .main-head ul .head1 p {
     color: #fff;
     margin: 0;
     line-height: 43px;
 }
 
-.main .main-head ul li input {
+.main .main-head ul .head1 {
+    position: relative;
+}
+
+.location {
+    cursor: pointer;
+}
+
+.location:hover .care {
+    display: block;
+}
+
+#search {
     width: 345px;
     height: 38px;
     margin-top: 5px;
@@ -71,15 +91,112 @@ body {
     outline: none;
 }
 
+.search-list {
+    margin: 0;
+}
+
+.search-list {
+    position: relative;
+    display: none;
+    width: 300px;
+    height: 300px;
+    background-color: rgba(255, 255, 255, 1);
+    z-index: 2;
+    overflow-y: scroll;
+}
+
+.show {
+    display: block !important;
+}
+
+.main .main-head ul li .city-item {
+    display: block;
+    text-align: left;
+    height: 20px;
+    font-size: 18px;
+    padding-top: 20px;
+    margin-left: 0;
+    line-height: 20px;
+}
+
+.main .main-head ul li .city-item:hover {
+    background-color: lightgray;
+}
+
 .care {
     display: none;
     position: absolute;
-    right: 200px;
+    right: -110px;
     top: 40px;
     width: 418px;
     height: 100px;
     background-color: #fff;
     border-radius: 10px;
+}
+
+.care-list {
+    padding-inline-start: 0px;
+}
+
+.care-list .item p {
+    display: inline-block;
+}
+
+.care-list .item .city {
+    height: 32px;
+    line-height: 32px;
+    font-size: 14px;
+    padding-left: 40px;
+    padding-right: 40px;
+    color: #555 !important;
+}
+
+
+
+.weather img {
+    height: 20px;
+    width: 20px;
+    vertical-align: middle;
+}
+
+.care-list .item .weather {
+    display: inline-block;
+}
+
+.care-list .item .weather .weathernow {
+    width: 116px;
+    height: 32px;
+    line-height: 32px;
+    font-size: 14px;
+    padding-left: 20px;
+    color: #555;
+}
+
+.care-list .item .temp {
+    width: 66px;
+    text-align: right;
+    height: 32px;
+    line-height: 32px;
+    font-size: 14px;
+    padding-left: 20px;
+    color: #555 !important;
+}
+
+.care-list .item .del {
+    display: none;
+    height: 15px;
+    width: 15px;
+    margin-top: -3px;
+    margin-left: 12px;
+    background-image: url(../image/del.png);
+}
+
+.care-list .item:hover {
+    background-color: #c1dffd;
+}
+
+.care-list .item:hover .del {
+    display: inline-block;
 }
 
 .c-head {
@@ -99,9 +216,6 @@ body {
     color: #ccc;
 }
 
-.main .main-head ul .location:hover .care {
-    display: block;
-}
 
 .xian {
     position: relative;
@@ -214,6 +328,10 @@ body {
     right: 200px;
 }
 
+.main #current-weather .icon {
+    width: 150px;
+}
+
 .main .tips {
     position: absolute;
     top: 260px;
@@ -246,4 +364,455 @@ body {
     height: 20px;
     width: 20px;
     background-image: url(../image/change.png);
+}
+
+#hours {
+    position: relative;
+    height: 143px;
+    margin: 310px auto 40px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 14px 0 rgba(0, 0, 0, .08);
+    padding: 20px 30px 27px;
+    overflow: hidden;
+}
+
+#hours .title::before {
+    content: '';
+    float: left;
+    height: 7px;
+    width: 7px;
+    margin-right: 10px;
+    background: #344665;
+    overflow: hidden;
+    border-radius: 50%;
+    margin-top: 8px;
+}
+
+#hours .title {
+    font-size: 18px;
+    color: #344665;
+    height: 21px;
+    line-height: 21px;
+    float: left;
+    margin: 0 10px -5px 0;
+
+}
+
+#hours a {
+    float: left;
+    font-size: 12px;
+    color: #8a9baf;
+    height: 21px;
+    line-height: 21px;
+    margin: 0 10px -5px 0;
+}
+
+#hours .page-ctrl {
+    float: right;
+}
+
+#hours .page-ctrl .btn {
+    float: left;
+    width: 22px;
+    height: 22px;
+    z-index: 2;
+}
+
+#hours .page-ctrl #btn-prev {
+    background: url(../image/left.png) no-repeat;
+}
+
+#hours .page-ctrl #btn-next {
+    background: url(../image/right.png) no-repeat;
+}
+
+#hours #weather ol {
+    white-space: nowrap;
+    margin-top: 30px;
+    padding-left: 0;
+}
+
+#hours #weather #item {
+    display: inline-block;
+    /* float: left; */
+    width: 40px;
+    margin-right: 64px;
+    text-align: center;
+    background-repeat: no-repeat;
+    background-position: right;
+    position: relative;
+
+}
+
+#hours #weather #item .txt-time {
+    font-size: 14px;
+    color: #8a9baf;
+    line-height: 14px;
+    height: 14px;
+    margin-bottom: 24px;
+}
+
+#hours #weather #item .icon {
+    display: block;
+    width: 30px;
+    height: 30px;
+    margin: 0 auto;
+    margin-bottom: 18px;
+}
+
+
+#hours #weather #item .txt-degree {
+    font-size: 18px;
+    color: 384c78;
+    line-height: 14px;
+}
+
+#yb-7-days {
+    float: left;
+    width: 740px;
+    height: 510px;
+    padding: 20px 0 0;
+    border-radius: 10px;
+    background-color: #fff;
+    box-shadow: 0 0 14px 0 rgba(0, 0, 0, .08);
+}
+
+#yb-7-days #title::before {
+    content: '';
+    float: left;
+    height: 7px;
+    width: 7px;
+    margin-right: 10px;
+    background: #344665;
+    overflow: hidden;
+    border-radius: 50%;
+    margin-top: 8px;
+    margin-left: 40px;
+}
+
+#yb-7-days .head {
+    height: 30px;
+}
+
+#yb-7-days #title {
+    font-size: 18px;
+    color: #344665;
+    height: 21px;
+    line-height: 21px;
+    float: left;
+    margin: 0 0px 18px 10px;
+}
+
+#yb-7-days #link-15 {
+    float: right;
+    font-size: 12px;
+    background: #f8faff;
+    border: 1px solid #dce5f0;
+    border-radius: 37px;
+    color: #344665;
+    height: 26px;
+    width: 100px;
+    line-height: 26px;
+    text-align: center;
+    margin: 0 30px 18px 0;
+}
+
+.weather {
+    position: relative;
+}
+
+.weather .weather-day .item {
+    width: 92px;
+    text-align: center;
+    float: left;
+    position: relative;
+    background-repeat: no-repeat;
+    background-position: right;
+    padding: 11px 0 7px;
+}
+
+.weather .weather-day .frist .day,
+.weather .weather-day .frist .data,
+.weather .weather-day .frist .weather,
+.weather .weather-day .frist .wind {
+    color: #c2c2c2 !important;
+}
+
+.weather .weather-day .second {
+    background: #f8faff !important;
+}
+
+.weather .weather-day .frist .icon {
+    opacity: .3;
+}
+
+.weather .weather-day .item .day {
+    font-size: 14px;
+    color: #384c78;
+    margin-bottom: 12px;
+    height: 14px;
+    line-height: 14px;
+}
+
+.weather .weather-day .item .data {
+    font-size: 12px;
+    color: #8a9b8a;
+    margin-bottom: 30px;
+    height: 12px;
+    line-height: 12px;
+}
+
+.weather .weather-day .item .icon {
+    display: inline-block;
+    height: 30px;
+    width: 30px;
+}
+
+.weather .weather-day .item .weather {
+    font-size: 14px;
+    color: #384c78;
+    line-height: 14px;
+    height: 14px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.weather .weather-day .item .dy-night {
+    margin-top: 174px;
+    margin-bottom: 24px;
+}
+
+.weather .weather-day .item .wind {
+    font-size: 12px;
+    color: #8a9baf;
+    line-height: 12px;
+    height: 12px;
+}
+
+.weather .charts {
+    width: 740px;
+    height: 174px;
+    position: absolute;
+    top: 160px;
+    /* background-color: pink; */
+}
+
+#life {
+    float: right;
+    width: 600px;
+    height: 530px;
+    overflow: hidden;
+    padding-top: 20px;
+    position: relative;
+}
+
+#life #life-head {
+    height: 30px;
+}
+
+#life #life-head #title::before {
+    content: '';
+    float: left;
+    height: 7px;
+    width: 7px;
+    margin-right: 10px;
+    background: #344665;
+    overflow: hidden;
+    border-radius: 50%;
+    margin-top: 8px;
+    margin-left: 40px;
+}
+
+#life #life-head #title {
+    font-size: 18px;
+    color: #344665;
+    height: 21px;
+    line-height: 21px;
+    float: left;
+    margin: 0 0px 18px 10px;
+}
+
+#life #life-head .page-ctrl {
+    float: right;
+}
+
+#life #life-head .page-ctrl .btn {
+    float: left;
+    width: 22px;
+    height: 22px;
+}
+
+#life #life-head .page-ctrl #btn-prev1 {
+    background: url(../image/left.png) no-repeat;
+}
+
+#life #life-head .page-ctrl #btn-next1 {
+    margin-left: 8px;
+    background: url(../image/right.png) no-repeat;
+}
+
+#life #tips {
+    position: relative;
+    clear: both;
+    overflow: hidden;
+    position: relative;
+    width: 640px;
+    height: 480px;
+}
+
+#life #tips #content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 1300px;
+    margin-left: 0;
+}
+
+#life #tips .page {
+    float: left;
+    width: 600px;
+}
+
+#life #tips .page:nth-child(2n+1) {
+    margin-right: 14px;
+}
+
+#life #tips .item {
+
+    height: 140px;
+    width: 260px;
+    background-color: #fff;
+    box-shadow: 0 0 14px 0 rgba(0, 0, 0, .08);
+    border-radius: 10px;
+    text-align: center;
+    float: left;
+    overflow: hidden;
+    margin-bottom: 20px;
+    margin-left: 10px;
+
+}
+
+
+#life #tips .item .sub {
+    margin-top: 0;
+    height: 100px;
+    width: 260px;
+    padding-top: 38px;
+    transition: all .5s;
+}
+
+#life #tips .item:hover .sub {
+    margin-top: -140px;
+}
+
+#life #tips .icon {
+    display: block;
+    width: 34px;
+    height: 34px;
+    margin: 0 auto 12px;
+}
+
+#life #tips .sub .icon_3 {
+    background: url(../image/clothe.png);
+}
+
+#life #tips .content {
+    font-size: 16px;
+    line-height: 22px;
+    color: #384c78;
+}
+
+#life #tips .ct-detail {
+    height: 100%;
+    width: 160px;
+    padding: 0 20px;
+    display: table;
+    overflow: hidden;
+}
+
+#life #tips .ct-detail .detail {
+    vertical-align: middle;
+    text-align: justify;
+    display: table-cell;
+    font-size: 13px;
+    color: #384c78;
+    line-height: 1.5;
+
+}
+
+#life #tips .ct-detail .detail p {
+    padding: 0;
+    margin: 0;
+}
+
+
+#life #tips .sub .icon_5 {
+    background: url(../image/tq.png);
+}
+
+#life #tips .sub .icon_9 {
+    background: url(../image/yao.png);
+}
+
+#life #tips .sub .icon_2 {
+    background: url(../image/che.png);
+}
+
+#life #tips .sub .icon_1 {
+    background: url(../image/yd.png);
+}
+
+#life #tips .sub .icon_16 {
+    background: url(../image/ty.png);
+}
+
+#life #tips .sub .icon_4 {
+    background: url(../image/dy.png);
+}
+
+#life #tips .sub .icon_6 {
+    background: url(../image/ly.png);
+}
+
+#life #tips .sub .icon_15 {
+    background: url(../image/jt.png);
+}
+
+#life #tips .sub .icon_10 {
+    background: url(../image/zl.png);
+}
+
+#life #tips .sub .icon_8 {
+    background: url(../image/kx.png);
+}
+
+#life #tips .sub .icon_14 {
+    background: url(../image/yj.png);
+}
+
+
+.footer {
+    height: 265px;
+    background-color: #3a4570;
+    margin-top: 620px;
+}
+
+.sponsors {
+    text-align: center;
+    padding: 50px 0 35px;
+}
+
+.sponsors img {
+    display: inline-block;
+    vertical-align: middle;
+    margin: 0 31px;
+}
+
+.en {
+    font-size: 12px;
+    line-height: 28px;
+    height: 28px;
+    text-align: center;
+    color: #fff;
 }

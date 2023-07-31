@@ -7,67 +7,520 @@
     <title>腾讯天气</title>
     <link rel="shortcut icon" href="favicon2.ico">
     <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/qweather-icons@1.4.0/font/qweather-icons.css">
     <link rel="stylesheet" href="css/index.css">
+    <script src="js/my-axios.js"></script>
+    <script src="js/search.js"></script>
+    <script src="js/animate.js"></script>
+    <script src="js/index.js"></script>
 </head>
 
 <body>
 
-    <div class="banxin">
-        <div class="main">
-            <div class="main-head">
-                <span class="logo">
-                    <img src="image/logo.webp" alt="">
-                </span>
-                <ul>
-                    <li><input type="search" name="" id="" value="搜索市、区、县等"></li>
-                    <li><button class="add">[添加关注]</button></li>
-                    <li class="location">
-                        <p><img src="image/dw.png" alt="">&nbsp;陕西省&nbsp;西安市</p>
-                        <div class="care">
-                            <span class="c-head">关注的城市</span>
-                            <h3 class="c-down">点击“添加关注”添加城市哟~</h3>
+    <!-- 头部 -->
+    <div class="main banxin ">
+        <div class="main-head">
+            <span class="logo">
+                <img src="image/logo.webp" alt="">
+            </span>
+            <ul>
+                <li class="head1"><input type="search" name="" id="search" value="搜索市、区、县等">
+                    <ul class="search-list ">
+                        <li class="city-item"></li>
+                    </ul>
+                </li>
+                <li class="head1"><a class="add" href="javascript:;">[添加关注]</a></li>
+                <li class="location head1">
+                    <p class='101110101'><img src="image/dw.png" alt="">&nbsp;陕西省&nbsp;西安市</p>
+                    <div class="care">
+                        <span class="c-head">关注的城市</span>
+                        <ol class="care-list">
+                            <li class="item">
+                                <p class="city">西安市</p>
+                                <div class="weather">
+                                    <img src="image/cloud.png" alt="">
+                                    <p class="weathernow">多云</p>
+                                </div>
+                                <p class="temp">25°</p>
+                                <a href="javascript:;" class="del"></a>
+                            </li>
+                        </ol>
+                    </div>
+                </li>
+                <li class="head1"><a href="">无障碍浏览</a></li>
+                <li class="head1"><a href="">腾讯网首页</a></li>
+            </ul>
+
+        </div>
+        <div class="xian "></div>
+        <div class="report">
+            <p id="wd">35°</p>
+            <p id="tq">阴</p>
+            <p id="aqi">111&nbsp;轻度污染</p>
+        </div>
+        <div id="other">
+            <p class="item">
+                <i class="icon wind" id="ico-wind"></i>
+                <span>西北风&nbsp;1级</span>
+            </p>
+            <p class="item">
+                <i class="icon humidity" id="ico-humidity"></i>
+                <span>湿度&nbsp;44%</span>
+            </p>
+            <p class="item">
+                <i class="icon kPa" id="ico-kPa"></i>
+                <span>气压&nbsp;959hPa</span>
+            </p>
+            <p class="item">
+                <i class="icon limit" id="ico-limit"></i>
+                <span>限行&nbsp;4和9</span>
+            </p>
+        </div>
+        <div class="tips">
+            <p id="txt-tips">
+                天太热了，吃个西瓜～
+            </p>
+            <a href="" id="btn-tip-switch"></a>
+        </div>
+        <div id="current-weather">
+            <img class="icon" src="image/cloud.png" alt="">
+        </div>
+    </div>
+    <!-- 实时天气 -->
+    <div id="hours" class="banxin ">
+        <h2 class="title">逐小时预报</h2>
+        <a href="http://www.weather.com.cn/">数据来源于中国天气网</a>
+        <div class="page-ctrl">
+            <a href="javascript:;" class="btn" id="btn-prev"></a>
+            <a href="javascript:;" class="btn" id="btn-next"></a>
+        </div>
+        <div id="weather" style="position: absolute; left: 25px; top: 35px;">
+            <ol>
+                <li id="item">
+                    <p class="txt-time">1:00</p>
+                    <img src="image/li-cloude.png" alt="多云" title="多云" class="icon">
+                    <p class="txt-degree">33°</p>
+                </li>
+                <li id="item">
+                    <p class="txt-time">2:00</p>
+                    <img src="image/li-cloude.png" alt="多云" title="多云" class="icon">
+                    <p class="txt-degree">33°</p>
+                </li>
+                <li id="item">
+                    <p class="txt-time">3:00</p>
+                    <img src="image/li-cloude.png" alt="多云" title="多云" class="icon">
+                    <p class="txt-degree">33°</p>
+                </li>
+                <li id="item">
+                    <p class="txt-time">4:00</p>
+                    <img src="image/li-cloude.png" alt="多云" title="多云" class="icon">
+                    <p class="txt-degree">33°</p>
+                </li>
+                <li id="item">
+                    <p class="txt-time">5:00</p>
+                    <img src="image/li-cloude.png" alt="多云" title="多云" class="icon">
+                    <p class="txt-degree">33°</p>
+                </li>
+                <li id="item">
+                    <p class="txt-time">6:00</p>
+                    <img src="image/li-cloude.png" alt="多云" title="多云" class="icon">
+                    <p class="txt-degree">33°</p>
+                </li>
+                <li id="item">
+                    <p class="txt-time">7:00</p>
+                    <img src="image/li-cloude.png" alt="多云" title="多云" class="icon">
+                    <p class="txt-degree">33°</p>
+                </li>
+                <li id="item">
+                    <p class="txt-time">8:00</p>
+                    <img src="image/li-cloude.png" alt="多云" title="多云" class="icon">
+                    <p class="txt-degree">33°</p>
+                </li>
+                <li id="item">
+                    <p class="txt-time">9:00</p>
+                    <img src="image/li-cloude.png" alt="多云" title="多云" class="icon">
+                    <p class="txt-degree">33°</p>
+                </li>
+                <li id="item">
+                    <p class="txt-time">10:00</p>
+                    <img src="image/li-cloude.png" alt="多云" title="多云" class="icon">
+                    <p class="txt-degree">33°</p>
+                </li>
+                <li id="item">
+                    <p class="txt-time">11:00</p>
+                    <img src="image/li-cloude.png" alt="多云" title="多云" class="icon">
+                    <p class="txt-degree">33°</p>
+                </li>
+                <li id="item">
+                    <p class="txt-time">12:00</p>
+                    <img src="image/li-cloude.png" alt="多云" title="多云" class="icon">
+                    <p class="txt-degree">33°</p>
+                </li>
+                <li id="item">
+                    <p class="txt-time">13:00</p>
+                    <img src="image/li-cloude.png" alt="多云" title="多云" class="icon">
+                    <p class="txt-degree">33°</p>
+                </li>
+                <li id="item">
+                    <p class="txt-time">14:00</p>
+                    <img src="image/li-cloude.png" alt="多云" title="多云" class="icon">
+                    <p class="txt-degree">33°</p>
+                </li>
+                <li id="item">
+                    <p class="txt-time">15:00</p>
+                    <img src="image/li-cloude.png" alt="多云" title="多云" class="icon">
+                    <p class="txt-degree">33°</p>
+                </li>
+                <li id="item">
+                    <p class="txt-time">16:00</p>
+                    <img src="image/li-cloude.png" alt="多云" title="多云" class="icon">
+                    <p class="txt-degree">33°</p>
+                </li>
+                <li id="item">
+                    <p class="txt-time">17:00</p>
+                    <img src="image/li-cloude.png" alt="多云" title="多云" class="icon">
+                    <p class="txt-degree">33°</p>
+                </li>
+                <li id="item">
+                    <p class="txt-time">18:00</p>
+                    <img src="image/li-cloude.png" alt="多云" title="多云" class="icon">
+                    <p class="txt-degree">33°</p>
+                </li>
+                <li id="item">
+                    <p class="txt-time">19:00</p>
+                    <img src="image/li-cloude.png" alt="多云" title="多云" class="icon">
+                    <p class="txt-degree">33°</p>
+                </li>
+                <li id="item">
+                    <p class="txt-time">20:00</p>
+                    <img src="image/li-cloude.png" alt="多云" title="多云" class="icon">
+                    <p class="txt-degree">33°</p>
+                </li>
+                <li id="item">
+                    <p class="txt-time">21:00</p>
+                    <img src="image/li-cloude.png" alt="多云" title="多云" class="icon">
+                    <p class="txt-degree">33°</p>
+                </li>
+                <li id="item">
+                    <p class="txt-time">22:00</p>
+                    <img src="image/li-cloude.png" alt="多云" title="多云" class="icon">
+                    <p class="txt-degree">33°</p>
+                </li>
+                <li id="item">
+                    <p class="txt-time">23:00</p>
+                    <img src="image/li-cloude.png" alt="多云" title="多云" class="icon">
+                    <p class="txt-degree">33°</p>
+                </li>
+                <li id="item">
+                    <p class="txt-time">24:00</p>
+                    <img src="image/li-cloude.png" alt="多云" title="多云" class="icon">
+                    <p class="txt-degree">33°</p>
+                </li>
+            </ol>
+        </div>
+    </div>
+    <!-- 天气预报 -->
+    <div class="banxin yb">
+        <div id="yb-7-days">
+            <div class="head">
+                <h2 id="title">7日天气预报</h2>
+                <a id="link-15" target="_blank" href="http://www.weather.com.cn/weather15d/101110101.shtml">15日天气预报</a>
+            </div>
+            <div class="weather">
+                <ol class="weather-day">
+                    <li class="item frist">
+                        <p class="day">昨天</p>
+                        <p class="data">07月23日</p>
+                        <div class="dy-time">
+                            <div class="weather">阴</div>
+                            <img src="image/yin.png" alt="阴" title="阴" class="icon">
+                        </div>
+                        <div class="dy-night">
+                            <img src="image/yin.png" alt="阴" title="阴" class="icon">
+                            <div class="weather">阴</div>
+                            <p class="wind">微风 3级</p>
                         </div>
                     </li>
-                    <li><a href="">无障碍浏览</a></li>
-                    <li><a href="">腾讯网首页</a></li>
-                </ul>
-
+                    <li class="item second">
+                        <p class="day">昨天</p>
+                        <p class="data">07月23日</p>
+                        <div class="dy-time">
+                            <div class="weather">阴</div>
+                            <img src="image/yin.png" alt="阴" title="阴" class="icon">
+                        </div>
+                        <div class="dy-night">
+                            <img src="image/yin.png" alt="阴" title="阴" class="icon">
+                            <div class="weather">阴</div>
+                            <p class="wind">微风 3级</p>
+                        </div>
+                    </li>
+                    <li class="item ">
+                        <p class="day">昨天</p>
+                        <p class="data">07月23日</p>
+                        <div class="dy-time">
+                            <div class="weather">阴</div>
+                            <img src="image/yin.png" alt="阴" title="阴" class="icon">
+                        </div>
+                        <div class="dy-night">
+                            <img src="image/yin.png" alt="阴" title="阴" class="icon">
+                            <div class="weather">阴</div>
+                            <p class="wind">微风 3级</p>
+                        </div>
+                    </li>
+                    <li class="item ">
+                        <p class="day">昨天</p>
+                        <p class="data">07月23日</p>
+                        <div class="dy-time">
+                            <div class="weather">阴</div>
+                            <img src="image/yin.png" alt="阴" title="阴" class="icon">
+                        </div>
+                        <div class="dy-night">
+                            <img src="image/yin.png" alt="阴" title="阴" class="icon">
+                            <div class="weather">阴</div>
+                            <p class="wind">微风 3级</p>
+                        </div>
+                    </li>
+                    <li class="item ">
+                        <p class="day">昨天</p>
+                        <p class="data">07月23日</p>
+                        <div class="dy-time">
+                            <div class="weather">阴</div>
+                            <img src="image/yin.png" alt="阴" title="阴" class="icon">
+                        </div>
+                        <div class="dy-night">
+                            <img src="image/yin.png" alt="阴" title="阴" class="icon">
+                            <div class="weather">阴</div>
+                            <p class="wind">微风 3级</p>
+                        </div>
+                    </li>
+                    <li class="item ">
+                        <p class="day">昨天</p>
+                        <p class="data">07月23日</p>
+                        <div class="dy-time">
+                            <div class="weather">阴</div>
+                            <img src="image/yin.png" alt="阴" title="阴" class="icon">
+                        </div>
+                        <div class="dy-night">
+                            <img src="image/yin.png" alt="阴" title="阴" class="icon">
+                            <div class="weather">阴</div>
+                            <p class="wind">微风 3级</p>
+                        </div>
+                    </li>
+                    <li class="item ">
+                        <p class="day">昨天</p>
+                        <p class="data">07月23日</p>
+                        <div class="dy-time">
+                            <div class="weather">阴</div>
+                            <img src="image/yin.png" alt="阴" title="阴" class="icon">
+                        </div>
+                        <div class="dy-night">
+                            <img src="image/yin.png" alt="阴" title="阴" class="icon">
+                            <div class="weather">阴</div>
+                            <p class="wind">微风 3级</p>
+                        </div>
+                    </li>
+                </ol>
+                <div class="charts">
+                    <div style="position: relative;overflow: hidden;width: 740px;height: 174px;
+                    padding: 0;margin: 0;border-width: 0;cursor: default;">
+                        <canvas id="myCanvas" width="925" height="217" style="position: absolute; left: 0px; 
+                            top: 25px; width: 740px; height: 174px; 
+                            user-select: none; 
+                            -webkit-tap-highlight-color: rgba(0, 0, 0, 0); 
+                            padding: 0px; margin: 0px; border-width: 0px;"></canvas>
+                    </div>
+                </div>
             </div>
-            <div class="xian"></div>
-            <p class="qxt">中央气象台xx:xx发布</p>
-            <div class="report">
-                <p id="wd">35°</p>
-                <p id="tq">阴</p>
-                <p id="aqi">111&nbsp;轻度污染</p>
-                <p id="warning">高温预警</p>
+        </div>
+        <div id="life">
+            <div id="life-head">
+                <h2 id="title">生活指数</h2>
+                <div class="page-ctrl">
+                    <a href="javascript:;" class="btn" id="btn-prev1"></a>
+                    <a href="javascript:;" class="btn" id="btn-next1"></a>
+                </div>
             </div>
-            <div id="other">
-                <p class="item">
-                    <i class="icon wind" id="ico-wind"></i>
-                    <span>西北风&nbsp;1级</span>
-                </p>
-                <p class="item">
-                    <i class="icon humidity" id="ico-humidity"></i>
-                    <span>湿度&nbsp;44%</span>
-                </p>
-                <p class="item">
-                    <i class="icon kPa" id="ico-kPa"></i>
-                    <span>气压&nbsp;959hPa</span>
-                </p>
-                <p class="item">
-                    <i class="icon limit" id="ico-limit"></i>
-                    <span>限行&nbsp;4和9</span>
-                </p>
+            <div id="tips">
+                <div id="content">
+                    <ul class="page" id="living1">
+                        <li class="item ">
+                            <div class="sub">
+                                <i class="icon icon_cloth"></i>
+                                <p class="content">穿衣 炎热</p>
+                            </div>
+                            <div class="ct-detail">
+                                <div class="detail">
+                                    <p></p>
+                                    <p>宜：</p>
+                                    <p>忌：</p>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="item ">
+                            <div class="sub">
+                                <i class="icon icon_weather"></i>
+                                <p class="content">雨伞 不带伞</p>
+                            </div>
+                            <div class="ct-detail">
+                                <div class="detail">
+                                    <p></p>
+                                    <p>宜：</p>
+                                    <p>忌：</p>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="item">
+                            <div class="sub">
+                                <i class="icon icon_health"></i>
+                                <p class="content">感冒 少发</p>
+                            </div>
+                            <div class="ct-detail">
+                                <div class="detail">
+                                    <p></p>
+                                    <p>宜：</p>
+                                    <p>忌：</p>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="item">
+                            <div class="sub">
+                                <i class="icon icon_car"></i>
+                                <p class="content">洗车 较适宜</p>
+                            </div>
+                            <div class="ct-detail">
+                                <div class="detail">
+                                    <p></p>
+                                    <p>宜：</p>
+                                    <p>忌：</p>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="item ">
+                            <div class="sub">
+                                <i class="icon icon_sport"></i>
+                                <p class="content">运动 较适宜</p>
+                            </div>
+                            <div class="ct-detail">
+                                <div class="detail">
+                                    <p></p>
+                                    <p>宜：</p>
+                                    <p>忌：</p>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="item">
+                            <div class="sub">
+                                <i class="icon icon_sun"></i>
+                                <p class="content">防晒 弱</p>
+                            </div>
+                            <div class="ct-detail">
+                                <div class="detail">
+                                    <p></p>
+                                    <p>宜：</p>
+                                    <p>忌：</p>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                    <ul class="page" id="living2">
+                        <li class="item">
+                            <div class="sub">
+                                <i class="icon icon_fishing"></i>
+                                <p class="content">钓鱼 不宜</p>
+                            </div>
+                            <div class="ct-detail">
+                                <div class="detail">
+                                    <p></p>
+                                    <p>宜：</p>
+                                    <p>忌：</p>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="item">
+                            <div class="sub">
+                                <i class="icon icon_trip"></i>
+                                <p class="content">旅游 一般</p>
+                            </div>
+                            <div class="ct-detail">
+                                <div class="detail">
+                                    <p></p>
+                                    <p>宜：</p>
+                                    <p>忌：</p>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="item">
+                            <div class="sub">
+                                <i class="icon icon_traffic"></i>
+                                <p class="content">交通 良好</p>
+                            </div>
+                            <div class="ct-detail">
+                                <div class="detail">
+                                    <p></p>
+                                    <p>宜：</p>
+                                    <p>忌：</p>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="item ">
+                            <div class="sub">
+                                <i class="icon icon_quality"></i>
+                                <p class="content">空气污染扩散条件 较差</p>
+                            </div>
+                            <div class="ct-detail">
+                                <div class="detail">
+                                    <p></p>
+                                    <p>宜：</p>
+                                    <p>忌：</p>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="item ">
+                            <div class="sub">
+                                <i class="icon icon_confort"></i>
+                                <p class="content">舒适度 较不舒适</p>
+                            </div>
+                            <div class="ct-detail">
+                                <div class="detail">
+                                    <p></p>
+                                    <p>宜：</p>
+                                    <p>忌：</p>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="item ">
+                            <div class="sub">
+                                <i class="icon icon_lyf"></i>
+                                <p class="content">晾晒 不太适宜</p>
+                            </div>
+                            <div class="ct-detail">
+                                <div class="detail">
+                                    <p></p>
+                                    <p>宜：</p>
+                                    <p>忌：</p>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
             </div>
-            <div class="tips">
-                <p id="txt-tips">
-                    天太热了，吃个西瓜～
-                </p>
-                <a href="" id="btn-tip-switch"></a>
-            </div>
-            <div id="current-weather">
-                <img class="icon" src="image/cloud.png" alt="">
-            </div>
+        </div>
+    </div>
+    <!-- 版权 -->
+    <div class="footer">
+        <div class="sponsors banxin">
+            <a href="https://www.cma.gov.cn/">
+                <img src="image/qxj.png" alt="">
+            </a>
+            <a href="http://www.nmc.cn/">
+                <img src="image/xqt.png" alt="">
+            </a>
+            <a href="http://www.weather.com.cn/">
+                <img src="image/zgtq.png" alt="">
+            </a>
+        </div>
+        <div class="en banxin">
+            Copyright © 1998 - 2023 Tencent. All Rights Reserved
         </div>
     </div>
 </body>
